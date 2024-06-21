@@ -20,7 +20,7 @@ class Scrape:
     def __init__(self, url):
         self.url = url
         self.page = 1
-        self.workbook = xlsxwriter.Workbook('Hentai.xlsx')
+        self.workbook = xlsxwriter.Workbook('File.xlsx')
 
     def configure_firefor_driver(self):
         # Add additional options to the webdriver
@@ -100,8 +100,8 @@ class Scrape:
 
     def scrape(self):
         # html = self.get_html_page()
-        all_hentai_worksheet = self.create_worksheet("All Hentai")
-        best_hentai_worksheet = self.create_worksheet("Best Hentai")
+        all_hentai_worksheet = self.create_worksheet("All")
+        best_hentai_worksheet = self.create_worksheet("Best")
 
         all_hentai_count = best_hentai_count = 1
         while True:
@@ -140,7 +140,7 @@ class Scrape:
                 break
             self.page += 1
 
-        print(f'Total Pages: {self.page-1}, Total Hentai: {all_hentai_count-1}, Best Hentai: {best_hentai_count-1}')
+        print(f'Total Pages: {self.page-1}, Total Movies: {all_hentai_count-1}, Best Movies: {best_hentai_count-1}')
         self.workbook.close()
 
     def scrape_inner_url(self, url):
